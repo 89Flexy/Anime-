@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Videoplayer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --accent:#38bdf8;
+  --text:#e5e7eb;
+}
+*{box-sizing:border-box;font-family:Poppins,system-ui}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(circle at top,#0b2a3d,#020617 65%);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:var(--text);
+}
+
+/* TOP BAR */
+.topbar{
+  position:fixed;
+  top:14px;
+  left:14px;
+  right:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:10;
+}
+.logo{
+  width:38px;height:38px;border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 0 12px var(--accent);
+}
+.settings{
+  font-size:22px;
+  cursor:pointer;
+}
+
+/* TITLE */
+.top-text{
+  position:fixed;
+  top:14px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:26px;
+  font-family:'Dancing Script',cursive;
+  text-shadow:0 0 12px var(--accent);
+}
+
+/* PLAYER */
+.player{
+  width:360px;
+  padding:18px;
+  border-radius:26px;
+  background:rgba(255,255,255,0.05); /* glass effect */
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.15);
+  box-shadow:0 0 45px rgba(56,189,248,0.35); /* blue glow */
+}
+
+/* COVER */
+.cover{
+  height:220px;
+  border-radius:18px;
+  overflow:hidden;
+  background:rgba(255,255,255,0.05); /* glassy */
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.15);
+  box-shadow:0 0 30px rgba(56,189,248,.6); /* blue glow */
+}
+.cover video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* CONTROLS */
+.controls{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  margin-top:14px;
+}
+.controls button{
+  border:none;
+  background:none;
+  color:#fff;
+  font-size:20px;
+  cursor:pointer;
+}
+.play{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:var(--accent);
+  color:#022c22;
+  font-size:22px;
+}
+
+/* ADD */
+.add{
+  margin-top:12px;
+  padding:12px;
+  text-align:center;
+  background:linear-gradient(135deg,#38bdf8,#7dd3fc);
+  color:#022c22;
+  border-radius:14px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* LIST */
+.list{
+  margin-top:14px;
+  max-height:160px;
+  overflow:auto;
+}
+.item{
+  padding:10px;
+  background:rgba(255,255,255,.08);
+  border-radius:12px;
+  margin-bottom:8px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.item span{cursor:pointer}
+.item img{
+  width:20px;
+  cursor:pointer;
+}
+
+/* MODALS */
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(6px);
+  z-index:100;
+}
+.modalBox{
+  width:300px;
+  padding:18px;
+  border-radius:22px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.15);
+  text-align:center;
+}
+.modalBox button{
+  margin:10px 6px 0;
+  padding:8px 16px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  backdrop-filter:blur(6px);
+}
+.yes{background:#38bdf8;color:#022c22}
+.no{background:rgba(255,255,255,.15);color:#fff}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <img class="logo" src="https://drive.google.com/thumbnail?id=1pVLvz0c2tYbX4ZVVPAy1ghL0DHStvf7e&sz=w2000">
+<span class="settings" onclick="openSettings()">⚙</span>
+</div>
+
+<div class="top-text">Video Player</div>
+
+<div class="player">
+
+  <div class="cover">
+    <video id="video" muted playsinline></video>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <button onclick="prev()">⏮</button>
+    <button class="play" id="playBtn" onclick="toggle()">▶</button>
+    <button onclick="next()">⏭</button>
+  </div>
+
+<style>
+
+</style>
+
+<!-- After -->
+<div class="add" onclick="zoom()">Fullscreen</div>
+
+  <div class="add" onclick="file.click()">➕ Add Video</div>
+
+  <div class="list" id="list"></div>
+
+  <input type="file" id="file" hidden accept="video/*">
+</div>
+
+<!-- DELETE CONFIRM -->
+<div class="modal" id="deleteModal">
+  <div class="modalBox">
+    <p>Do you want to delete this video?</p>
+    <button class="yes" onclick="confirmDelete()">Yes</button>
+    <button class="no" onclick="closeDelete()">No</button>
+  </div>
+</div>
+<!-- SETTINGS MODAL -->
+<div class="modal" id="settingsModal">
+  <div class="modalBox">
+    <h3>Change Background</h3>
+    <div class="imgGrid" id="settingsGrid">
+        <img src="https://i.ibb.co/zTVdbryZ/de013aa3d799c9797f188f408bdf8268.jpg">
+      <img src="https://i.ibb.co/8gx8BS4X/1d20a039aba4dc4c82771ea3c66e2d54.jpg">
+      <img src="https://i.ibb.co/DPScgsrF/f1b77c0de51121eec732ef83a3ec7c37.jpg">
+      <img src="https://i.ibb.co/0yHnf74b/2bf895a0de170f2ff258b42d6899f618.jpg">
+         <img src="https://i.ibb.co/KpLQXFq6/50bfa025afdee5e622a3b83e610bebfe.jpg">
+      <img src="https://i.ibb.co/fmzX9d6/aa63b5174989763ab84f45d840d3ca32.jpg">
+         <img src="https://i.ibb.co/XZ2fPM2S/fdfaa5dfd4e19b07adf7bdbee9b32ead.jpg">
+      <img src="https://i.ibb.co/hFkg6YRp/96700cdea149b6adf41ffb449c7e0627.jpg">
+      <img src="https://i.ibb.co/jPggQM0p/b42e169df3029cff2b50ce099dc2bc8f.jpg">
+      <img src="https://i.ibb.co/TxvfNRVM/f572857a2d09adc2c567947ca167d66e.jpg">
+         <img src="https://i.ibb.co/4Z4NyB8Z/2be32b7c95a6aa4f9b0abf8278e301c5.jpg">
+      <img src="https://i.ibb.co/pBYxKvKj/4bc8e3f73beec0707b29746c04205947.jpg">
+       
+       
+       
+       
+       
+        <img src="https://i.ibb.co/LXQhh2Tr/7d7ec98360521efa7b9699bb5f0ad533.jpg">
+      <img src="https://i.ibb.co/9mdLFDJZ/b6eef9fda5ef3ea7bcc1e9751a930250.jpg">
+         <img src="https://i.ibb.co/fzmXxjPq/7b4afa33e5bddf06067ea4fc1bb09bbb.jpg">
+      <img src="https://i.ibb.co/272XBYPQ/a4e8713ab66a7ca5aeb2bee7ce99272d.jpg">
+      <img src="https://i.ibb.co/mCR3vR1K/8cd2391b0e8074fd5ba390a55799f750.jpg">
+      <img src="https://i.ibb.co/mrQV5pCv/ff096c4cff4838df7a5a9cf2b6cefc9b.jpg">
+         <img src="https://i.ibb.co/TGPTYN2/2f98f4c0e5d632ed99413d4a4db9e398.jpg">
+      <img src="https://i.ibb.co/zHjwFVB2/8ebdb75fcb50244277dfe960464807d0.jpg">
+         <img src="https://i.ibb.co/Zp0Qk7rx/313ef7ee7df3a08f4e1342e2fde4222a.jpg">
+         
+    </div>
+    <button class="no" onclick="closeSettings()">Close</button>
+  </div>
+</div>
+<style>
+    #settingsModal .imgGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:12px;
+}
+
+#settingsModal .imgGrid img{
+  width:100%;
+  height:80px;
+  object-fit:cover;
+  border-radius:12px;
+  cursor:pointer;
+  box-shadow:0 0 10px rgba(0,0,0,.4);
+}
+
+#settingsModal .imgGrid img:hover{
+  outline:2px solid #38bdf8;
+}
+</style>
+<script>
+    function zoom(){
+  if (!document.fullscreenElement) {
+    video.requestFullscreen?.();
+  } else {
+    document.exitFullscreen?.();
+  }
+}
+    const settingsModal = document.getElementById("settingsModal");
+
+/* OPEN / CLOSE */
+function openSettings(){
+  settingsModal.style.display="flex";
+}
+function closeSettings(){
+  settingsModal.style.display="none";
+}
+
+/* BACKGROUND CHANGE */
+function setBg(src){
+  const player = document.querySelector(".player");
+  // Apply the clicked image as background
+  player.style.background = `linear-gradient(rgba(2,6,23,.75), rgba(2,6,23,.75)), url('${src}') center/cover`;
+  
+  // Save to localStorage so it persists
+  localStorage.setItem("bg", src);
+}
+/* RESTORE BG */
+const savedBg = localStorage.getItem("bg");
+if(savedBg) setBg(savedBg); // works with URL directly
+if(savedBg) setBg(Number(savedBg));
+const file = document.getElementById("file");
+const video = document.getElementById("video");
+const list  = document.getElementById("list");
+const playBtn = document.getElementById("playBtn");
+const deleteModal = document.getElementById("deleteModal");
+
+let videos = JSON.parse(localStorage.getItem("videos")||"[]");
+let index = 0;
+let deleteIndex = null;
+
+/* PLAY */
+function play(i){
+  if(!videos[i]) return;
+  index=i;
+  video.src = videos[i].src;
+  video.play();
+  playBtn.innerText="⬜";
+  localStorage.setItem("lastIndex",i);
+}
+
+/* TOGGLE */
+function toggle(){
+  if(!video.src) return;
+  if(video.paused){
+    video.play();
+    playBtn.innerText="⬜";
+  }else{
+    video.pause();
+    playBtn.innerText="▶";
+  }
+}
+
+/* NEXT / PREV */
+function next(){
+  if(videos.length===0) return;
+  index=(index+1)%videos.length;
+  play(index);
+}
+function prev(){
+  if(videos.length===0) return;
+  index=(index-1+videos.length)%videos.length;
+  play(index);
+}
+
+/* AUTO NEXT */
+video.onended=next;
+
+/* ADD */
+file.onchange=()=>{
+  const f=file.files[0];
+  if(!f) return;
+  const url=URL.createObjectURL(f);
+  videos.push({name:f.name,src:url});
+  save();
+  render();
+  play(videos.length-1);
+};
+
+/* DELETE */
+function askDelete(i){
+  deleteIndex=i;
+  deleteModal.style.display="flex";
+}
+function confirmDelete(){
+  videos.splice(deleteIndex,1);
+  save();
+  render();
+  play(0);
+  closeDelete();
+}
+function closeDelete(){
+  deleteModal.style.display="none";
+}
+
+/* LIST */
+function render(){
+  list.innerHTML="";
+  videos.forEach((v,i)=>{
+    const d=document.createElement("div");
+    d.className="item";
+    d.innerHTML=`<span>${v.name}</span>
+      <img src="https://img.icons8.com/ios-glyphs/30/ffffff/trash.png">`;
+    d.children[0].onclick=()=>play(i);
+    d.children[1].onclick=()=>askDelete(i);
+    list.appendChild(d);
+  });
+}
+function save(){
+  localStorage.setItem("videos",JSON.stringify(videos));
+}
+
+/* FULLSCREEN */
+video.onclick=()=>video.requestFullscreen?.();
+
+/* RESTORE */
+const lastIndex=localStorage.getItem("lastIndex");
+if(lastIndex && videos[lastIndex]) play(Number(lastIndex));
+render();
+</script>
+
+</body>
+</html>
