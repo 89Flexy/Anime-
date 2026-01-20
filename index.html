@@ -8,13 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
 <style>
-/* ==== SAME CSS AS YOUR FILE (UNCHANGED) ==== */
 :root{
   --bg:#020617;
   --accent:#38bdf8;
   --accent-glow:rgba(125,211,252,.6);
   --text:#e5e7eb;
-  --muted:#9ca3af;
 }
 *{box-sizing:border-box;font-family:Poppins,system-ui}
 body{
@@ -47,7 +45,6 @@ body{
   font-size:64px;
   margin-bottom:14px;
 }
-.title{text-align:center}
 .progress input{width:100%;accent-color:var(--accent)}
 .controls{
   display:flex;
@@ -68,16 +65,6 @@ body{
   background:var(--accent);
   color:#022c22;
 }
-.add{
-  margin-top:12px;
-  padding:12px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#38bdf8,#7dd3fc);
-  color:#022c22;
-  text-align:center;
-  cursor:pointer;
-  font-weight:600;
-}
 .list{margin-top:12px;max-height:160px;overflow:auto}
 .song{
   display:flex;
@@ -89,10 +76,25 @@ body{
   margin-bottom:8px;
   cursor:pointer;
 }
-.song img{
-  width:36px;height:36px;border-radius:6px;object-fit:cover
-}
+.song img{width:36px;height:36px;border-radius:6px;object-fit:cover}
 .song:hover{background:rgba(56,189,248,.2)}
+
+/* MOBILE LOGO */
+.mobile-logo{
+  position:fixed;
+  top:14px;
+  left:14px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  object-fit:cover;
+  z-index:999;
+  display:none;
+  box-shadow:0 0 12px rgba(56,189,248,.6);
+}
+@media(max-width:768px){
+  .mobile-logo{display:block;}
+}
 </style>
 </head>
 
@@ -101,10 +103,7 @@ body{
 <div class="player">
   <div class="cover" id="cover">🎵</div>
 
-  <div class="title">
-    <h3 id="songName">No song selected</h3>
-    <p>Local + Online Music</p>
-  </div>
+  <h3 id="songName" style="text-align:center">No song playing</h3>
 
   <div class="progress">
     <input type="range" id="progress" value="0">
@@ -116,103 +115,80 @@ body{
     <button onclick="next()">⏭</button>
   </div>
 
-  <div class="add" onclick="file.click()">➕ Add Local Music</div>
   <div class="list" id="list"></div>
 
-  <input type="file" id="file" hidden accept="audio/*">
   <audio id="audio"></audio>
 </div>
 
+<!-- MOBILE LOGO IMAGE -->
+<img src="https://i.ibb.co/XXXXXXX/logo.png" class="mobile-logo" alt="Logo">
+
 <script>
-/* ================= ONLINE SONGS ================= */
-const onlineSongs = [
+/* ONLINE SONGS ONLY */
+const songs = [
   {
-    name: "GitHub Song 1",
-    url: "https://raw.githubusercontent.com/USERNAME/REPO/main/song1.mp3",
-    cover: "https://i.ibb.co/zTVdbryZ/de013aa3d799c9797f188f408bdf8268.jpg"
+    name:"GitHub Song 1",
+    url:"https://raw.githubusercontent.com/USERNAME/REPO/main/song1.mp3",
+    cover:"https://i.ibb.co/zTVdbryZ/de013aa3d799c9797f188f408bdf8268.jpg"
   },
   {
-    name: "GitHub Song 2",
-    url: "https://raw.githubusercontent.com/USERNAME/REPO/main/song2.mp3",
-    cover: "https://i.ibb.co/8gx8BS4X/1d20a039aba4dc4c82771ea3c66e2d54.jpg"
+    name:"GitHub Song 2",
+    url:"https://raw.githubusercontent.com/USERNAME/REPO/main/song2.mp3",
+    cover:"https://i.ibb.co/8gx8BS4X/1d20a039aba4dc4c82771ea3c66e2d54.jpg"
   }
 ];
 
-/* ================= PLAYER LOGIC ================= */
-const audio = document.getElementById("audio");
-const file = document.getElementById("file");
-const list = document.getElementById("list");
-const nameUI = document.getElementById("songName");
-const cover = document.getElementById("cover");
-const progress = document.getElementById("progress");
-const playBtn = document.getElementById("playBtn");
+const audio=document.getElementById("audio");
+const list=document.getElementById("list");
+const nameUI=document.getElementById("songName");
+const cover=document.getElementById("cover");
+const progress=document.getElementById("progress");
+const playBtn=document.getElementById("playBtn");
 
-let songs = [...onlineSongs];
-let index = 0;
+let index=0;
 
-/* LOAD SONG LIST */
-function renderList(){
-  list.innerHTML = "";
-  songs.forEach((song,i)=>{
-    const d = document.createElement("div");
-    d.className = "song";
-
-    const img = document.createElement("img");
-    img.src = song.cover || "https://i.ibb.co/3h0V4g7/default-music.png";
-
-    const span = document.createElement("span");
-    span.innerText = song.name;
-    span.style.flex="1";
-
-    d.appendChild(img);
-    d.appendChild(span);
-    d.onclick = ()=>play(i);
-
-    list.appendChild(d);
-  });
-}
-renderList();
-
-/* PLAY */
-function play(i){
-  index = i;
-  const s = songs[i];
-  audio.src = s.url ? s.url : URL.createObjectURL(s.file);
+/* PLAY SONG */
+function playSong(i){
+  index=i;
+  const s=songs[i];
+  audio.src=s.url;
   audio.play();
-  nameUI.innerText = s.name;
-  playBtn.innerText = "⏸";
-
-  if(s.cover){
-    cover.style.background = `url(${s.cover}) center/cover`;
-    cover.innerHTML = "";
-  }
+  nameUI.innerText=s.name;
+  playBtn.innerText="⏸";
+  cover.style.background=`url(${s.cover}) center/cover`;
+  cover.innerHTML="";
 }
 
-/* CONTROLS */
+/* PLAY BUTTON */
 function toggle(){
-  if(!audio.src) return;
+  if(!audio.src){
+    playSong(0);   // ▶ first song
+    return;
+  }
   if(audio.paused){
     audio.play(); playBtn.innerText="⏸";
   }else{
     audio.pause(); playBtn.innerText="▶";
   }
 }
-function next(){ index=(index+1)%songs.length; play(index); }
-function prev(){ index=(index-1+songs.length)%songs.length; play(index); }
 
-/* LOCAL ADD */
-file.onchange = ()=>{
-  const f=file.files[0];
-  if(!f) return;
-  songs.push({name:f.name,file:f});
-  renderList();
-};
+function next(){ playSong((index+1)%songs.length); }
+function prev(){ playSong((index-1+songs.length)%songs.length); }
+
+/* PLAYLIST */
+songs.forEach((s,i)=>{
+  const d=document.createElement("div");
+  d.className="song";
+  d.innerHTML=`<img src="${s.cover}"><span>${s.name}</span>`;
+  d.onclick=()=>playSong(i);
+  list.appendChild(d);
+});
 
 /* PROGRESS */
-audio.addEventListener("timeupdate",()=>{
-  progress.max = audio.duration||0;
-  progress.value = audio.currentTime||0;
-});
+audio.ontimeupdate=()=>{
+  progress.max=audio.duration||0;
+  progress.value=audio.currentTime||0;
+};
 progress.oninput=()=>audio.currentTime=progress.value;
 audio.onended=next;
 </script>
