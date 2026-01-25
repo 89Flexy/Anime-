@@ -233,17 +233,17 @@ body{
 <!-- SETTINGS ICON -->
 <button class="settings-icon" id="settingsBtn">⚙</button>
 <style>
-  .settings-icon{
-  position:absolute;
-  top:12px;
-  right:12px;
-  background:transparent;
-  border:none;
-  font-size:22px;
-  cursor:pointer;
-  color:white;
-  z-index:20;
-  transition:transform .4s ease;
+.settings-icon{
+  position: fixed;        /* 🔒 FIXED */
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: white;
+  z-index: 10000;         /* sabke upar rahe */
+  transition: transform .4s ease;
 }
 
 </style>
