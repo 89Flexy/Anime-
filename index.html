@@ -178,46 +178,61 @@ body{
   transform: translateX(-50%);
   
   font-family: 'Dancing Script', cursive;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 900;
   color: #38bdf8;
-  text-shadow: 0 0 4px #38bdf8;  /* subtle glow */
-  
+  text-align: center;
+  letter-spacing: 1.5px;
+
   z-index: 10000;
   pointer-events: none;
 
-  /* run glitch animation once on load */
-  animation: glitchOnce 1.5s ease-in-out 1 forwards;
+  /* base glow */
+  text-shadow: 0 0 4px #38bdf8;
+
+  /* startup fast flicker */
+  animation: startupFlicker 1.2s linear 1 forwards;
 }
 
-/* Glitch keyframes */
-@keyframes glitchOnce {
-  0% {
-    transform: translateX(-50%) translate(0,0);
-    text-shadow: 0 0 4px #38bdf8;
-  }
-  20% {
-    transform: translateX(-50%) translate(-2px, 1px);
-    text-shadow: 1px 0 #ff3c3c, -1px 0 #38bdf8;
-  }
-  40% {
-    transform: translateX(-50%) translate(2px, -1px);
-    text-shadow: -1px 0 #ff3c3c, 1px 0 #38bdf8;
-  }
-  60% {
-    transform: translateX(-50%) translate(-1px, 2px);
-    text-shadow: 1px 1px #ff3c3c, -1px -1px #38bdf8;
-  }
-  80% {
-    transform: translateX(-50%) translate(1px, -2px);
-    text-shadow: -1px -1px #ff3c3c, 1px 1px #38bdf8;
-  }
-  100% {
-    transform: translateX(-50%) translate(0,0);
-    text-shadow: 0 0 4px #38bdf8; /* back to normal glow */
-  }
+/* fast flicker on page load */
+@keyframes startupFlicker {
+  0% { opacity: 0.1; text-shadow: none; }
+  10% { opacity: 1; text-shadow: 0 0 6px #38bdf8; }
+  20% { opacity: 0.2; text-shadow: none; }
+  30% { opacity: 1; text-shadow: 0 0 8px #38bdf8; }
+  40% { opacity: 0.3; text-shadow: none; }
+  50% { opacity: 1; text-shadow: 0 0 10px #38bdf8; }
+  60% { opacity: 0.4; text-shadow: none; }
+  70% { opacity: 1; text-shadow: 0 0 12px #38bdf8; }
+  80% { opacity: 0.5; text-shadow: none; }
+  90% { opacity: 1; text-shadow: 0 0 14px #38bdf8; }
+  100% { opacity: 1; text-shadow: 0 0 4px #38bdf8; } /* normal glow freeze */
+}
+
+/* subtle flicker class for 30s interval */
+.flicker {
+  animation: shortFlicker 0.4s ease-in-out 1 forwards;
+}
+
+@keyframes shortFlicker {
+  0% { opacity: 1; text-shadow: 0 0 4px #38bdf8; }
+  50% { opacity: 0.7; text-shadow: 0 0 12px #38bdf8; }
+  100% { opacity: 1; text-shadow: 0 0 4px #38bdf8; }
 }
 </style>
+  <script>
+const topText = document.querySelector('.top-text');
+
+// every 30s, add flicker class
+setInterval(() => {
+  topText.classList.add('flicker');
+  
+  // remove class after animation ends
+  setTimeout(() => {
+    topText.classList.remove('flicker');
+  }, 400); // duration = 0.4s
+}, 30000); // 30000ms = 30s
+  </script>
 </head>
 
 <body>
