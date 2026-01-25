@@ -34,7 +34,7 @@ body{
   padding: 18px;
   border-radius: 26px;
   background:
-    linear-gradient(rgba(2,6,23,.75),rgba(2,6,23,.75)),
+    linear-gradient(rgba(2,6,23,0.35),rgba(2,6,23,0.50)),
     url("https://i.ibb.co/mCR3vR1K/8cd2391b0e8074fd5ba390a55799f750.jpg");
   background-size: cover;
   background-position: center;
@@ -471,7 +471,7 @@ bgGrid.querySelectorAll("img").forEach(img=>{
 /* SET BG */
 function setBg(src){
   player.style.background =
-    `linear-gradient(rgba(2,6,23,.75),rgba(2,6,23,.75)), url(${src}) center/cover`;
+    `linear-gradient(rgba(2,6,23,0.35),rgba(2,6,23,0.50)), url(${src}) center/cover`;
 }
 
 /* LOAD SAVED BG */
