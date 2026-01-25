@@ -41,9 +41,13 @@ body{
   box-shadow: 0 30px 70px rgba(0,0,0,.7);
 }
 .cover{
+  .cover{
   height:220px;
   border-radius:18px;
-  background:radial-gradient(circle at top,#7dd3fc,#38bdf8);
+
+  /* 🎯 DEFAULT IMAGE (play se pehle) */
+  background: url("https://i.ibb.co/8gx8BS4X/1d20a039aba4dc4c82771ea3c66e2d54.jpg") center/cover;
+
   display:flex;
   align-items:center;
   justify-content:center;
@@ -174,7 +178,7 @@ body{
 <body>
 
 <div class="player">
-  <div class="cover" id="cover">🎵</div>
+  <div class="cover" id="cover"></div>
 
   <h3 id="songName" style="text-align:center">No song playing</h3>
 
