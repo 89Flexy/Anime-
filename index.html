@@ -490,8 +490,6 @@ function prev(){
   playSong(index);
 }
 </script>
-</body>
-</html>
 <script>
 const bgModal = document.getElementById("bgModal");
 const bgGrid  = document.getElementById("bgGrid");
@@ -528,3 +526,26 @@ if(savedBg){
   setBg(savedBg);
 }
 </script>
+<div class="footer-text">
+  2026 © Abhi-89
+</div>
+<style>
+    .footer-text {
+  position: fixed;        /* scroll ke time bhi bottom me rahe */
+  bottom: 14px;           /* bottom se distance */
+  left: 50%;              /* center horizontal */
+  transform: translateX(-50%); /* perfect center */
+  
+  font-family: 'Poppins', system-ui;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;         /* accent color */
+  
+  text-shadow: 0 0 4px rgba(56,189,248,0.6);  /* subtle glow */
+  
+  z-index: 10000;         /* player ke upar na aaye */
+  pointer-events: none;   /* click ignore ho jaye */
+}
+</style>
+</body>
+</html>
