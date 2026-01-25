@@ -383,7 +383,7 @@ function playSong(i){
   audio.src = s.url;
   audio.play();
   nameUI.innerText = s.name;
-  playBtn.innerText = "⏸";
+  playBtn.innerText = "⬜";
   cover.style.background = `url(${s.cover}) center/cover`;
   cover.innerHTML = "";
   cover.classList.add("playing"); // start up-down float
@@ -396,7 +396,7 @@ function toggle(){
   }
   if(audio.paused){
     audio.play();
-    playBtn.innerText = "⏸";
+    playBtn.innerText = "⬜";
     cover.classList.add("playing");
   } else {
     audio.pause();
