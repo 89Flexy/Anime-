@@ -104,6 +104,65 @@ body{
   50%  { transform: translateY(-12px); }
   100% { transform: translateY(0px); }
 }
+/* 🎨 BACKGROUND MODAL */
+.bg-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.bg-box{
+  width:320px;
+  padding:16px;
+  border-radius:22px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(26px);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.1),
+    0 0 40px rgba(56,189,248,.35);
+}
+
+.bg-box h3{
+  text-align:center;
+  margin-bottom:12px;
+}
+
+.bg-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.bg-grid img{
+  width:100%;
+  height:80px;
+  object-fit:cover;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.bg-grid img:hover{
+  outline:2px solid #38bdf8;
+  transform:scale(1.05);
+}
+
+.bg-close{
+  margin-top:12px;
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:14px;
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+}
 </style>
 </head>
 
@@ -128,7 +187,78 @@ body{
 
   <audio id="audio"></audio>
 </div>
+<!-- 🎨 BACKGROUND MODAL -->
+<div class="bg-modal" id="bgModal">
+  <div class="bg-box">
+    <h3>Select Background</h3>
 
+    <div class="bg-grid" id="bgGrid">
+      <img src="https://i.ibb.co/zTVdbryZ/de013aa3d799c9797f188f408bdf8268.jpg">
+      <img src="https://i.ibb.co/8gx8BS4X/1d20a039aba4dc4c82771ea3c66e2d54.jpg">
+      <img src="https://i.ibb.co/DPScgsrF/f1b77c0de51121eec732ef83a3ec7c37.jpg">
+      <img src="https://i.ibb.co/0yHnf74b/2bf895a0de170f2ff258b42d6899f618.jpg">
+         <img src="https://i.ibb.co/KpLQXFq6/50bfa025afdee5e622a3b83e610bebfe.jpg">
+      <img src="https://i.ibb.co/fmzX9d6/aa63b5174989763ab84f45d840d3ca32.jpg">
+         <img src="https://i.ibb.co/XZ2fPM2S/fdfaa5dfd4e19b07adf7bdbee9b32ead.jpg">
+      <img src="https://i.ibb.co/hFkg6YRp/96700cdea149b6adf41ffb449c7e0627.jpg">
+      <img src="https://i.ibb.co/jPggQM0p/b42e169df3029cff2b50ce099dc2bc8f.jpg">
+      <img src="https://i.ibb.co/TxvfNRVM/f572857a2d09adc2c567947ca167d66e.jpg">
+         <img src="https://i.ibb.co/4Z4NyB8Z/2be32b7c95a6aa4f9b0abf8278e301c5.jpg">
+      <img src="https://i.ibb.co/pBYxKvKj/4bc8e3f73beec0707b29746c04205947.jpg">
+       
+       
+       
+       
+       
+        <img src="https://i.ibb.co/LXQhh2Tr/7d7ec98360521efa7b9699bb5f0ad533.jpg">
+      <img src="https://i.ibb.co/9mdLFDJZ/b6eef9fda5ef3ea7bcc1e9751a930250.jpg">
+         <img src="https://i.ibb.co/fzmXxjPq/7b4afa33e5bddf06067ea4fc1bb09bbb.jpg">
+      <img src="https://i.ibb.co/272XBYPQ/a4e8713ab66a7ca5aeb2bee7ce99272d.jpg">
+      <img src="https://i.ibb.co/mCR3vR1K/8cd2391b0e8074fd5ba390a55799f750.jpg">
+      <img src="https://i.ibb.co/mrQV5pCv/ff096c4cff4838df7a5a9cf2b6cefc9b.jpg">
+         <img src="https://i.ibb.co/TGPTYN2/2f98f4c0e5d632ed99413d4a4db9e398.jpg">
+      <img src="https://i.ibb.co/zHjwFVB2/8ebdb75fcb50244277dfe960464807d0.jpg">
+         <img src="https://i.ibb.co/Zp0Qk7rx/313ef7ee7df3a08f4e1342e2fde4222a.jpg">
+         
+    </div>
+
+    <button class="bg-close" onclick="closeBgModal()">Close</button>
+  </div>
+</div>
+<!-- SETTINGS ICON -->
+<button class="settings-icon" id="settingsBtn">⚙</button>
+<style>
+  .settings-icon{
+  position:absolute;
+  top:12px;
+  right:12px;
+  background:transparent;
+  border:none;
+  font-size:22px;
+  cursor:pointer;
+  color:white;
+  z-index:20;
+  transition:transform .4s ease;
+}
+
+</style>
+
+<script>
+const settingsBtn = document.getElementById("settingsBtn");
+
+/* TOGGLE SETTINGS */
+settingsBtn.addEventListener("click",()=>{
+  settingsBtn.classList.toggle("active");
+  bgModal.style.display =
+    bgModal.style.display === "flex" ? "none" : "flex";
+});
+
+/* CLOSE MODAL PROPERLY */
+function closeBgModal(){
+  bgModal.style.display = "none";
+  settingsBtn.classList.remove("active");
+}
+</script>
 <!-- MOBILE LOGO IMAGE -->
 <img src="https://drive.google.com/thumbnail?id=1pVLvz0c2tYbX4ZVVPAy1ghL0DHStvf7e&sz=w2000" class="mobile-logo" alt="Logo">
 
@@ -137,12 +267,12 @@ body{
 const songs = [
   {
     name:"Paro",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/1ede04fa3e0ba664d2f74bb9d9c44edcdec41fa4/Paro%20-%20adityarikhari%20%20UNPLG%27d%20-%20UNPLGd%20Records.mp3",
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/1ede04fa3e0ba664d2f74bb9d9c44edcdec41fa4/Paro - adityarikhari  UNPLG'd - UNPLGd Records.mp3",
     cover:"https://drive.google.com/thumbnail?id=1fgANA0vPW_vYiZNv06YmN0hZUSGJBUuC&sz=w2000"
   },
   {
     name:"Ik Kudi",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/1ede04fa3e0ba664d2f74bb9d9c44edcdec41fa4/Paro%20-%20adityarikhari%20%20UNPLG%27d%20-%20UNPLGd%20Records.mp3",
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/1ede04fa3e0ba664d2f74bb9d9c44edcdec41fa4/Paro - adityarikhari  UNPLG'd - UNPLGd Records.mp3",
     cover:"https://i.ibb.co/9mqzHh07/b6084f026b016b404ee4f186944e5885.jpg"
   },
     {
@@ -268,8 +398,7 @@ function toggle(){
 }
 
 audio.onended = () => {
-  cover.classList.remove("playing"); // stop animation at song end
-  next();
+  next(); // auto next song
 };
 /* PLAYLIST */
 songs.forEach((s,i)=>{
@@ -288,6 +417,58 @@ audio.ontimeupdate=()=>{
 progress.oninput=()=>audio.currentTime=progress.value;
 audio.onended=next;
 </script>
+<script>
+function next(){
+  index++;
+  if(index >= songs.length){
+    index = 0; // last ke baad first
+  }
+  playSong(index);
+}
 
+function prev(){
+  index--;
+  if(index < 0){
+    index = songs.length - 1; // first se previous = last
+  }
+  playSong(index);
+}
+</script>
 </body>
 </html>
+<script>
+const bgModal = document.getElementById("bgModal");
+const bgGrid  = document.getElementById("bgGrid");
+const player  = document.querySelector(".player");
+
+/* OPEN */
+function openBgModal(){
+  bgModal.style.display = "flex";
+}
+
+/* CLOSE */
+function closeBgModal(){
+  bgModal.style.display = "none";
+}
+
+/* APPLY BACKGROUND */
+bgGrid.querySelectorAll("img").forEach(img=>{
+  img.onclick = ()=>{
+    setBg(img.src);
+    localStorage.setItem("playerBg", img.src);
+    closeBgModal();
+  };
+});
+
+/* SET BG */
+function setBg(src){
+  player.style.background =
+    `linear-gradient(rgba(2,6,23,.75),rgba(2,6,23,.75)), url(${src}) center/cover`;
+}
+
+/* LOAD SAVED BG */
+const savedBg = localStorage.getItem("playerBg");
+if(savedBg){
+  setBg(savedBg);
+}
+</script>
