@@ -171,11 +171,59 @@ body{
   font-weight:600;
   cursor:pointer;
 }
+  .top-text {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  font-family: 'Dancing Script', cursive;
+  font-size: 28px;
+  font-weight: 900;
+  color: #38bdf8;
+  text-shadow: 0 0 4px #38bdf8;  /* subtle glow */
+  
+  z-index: 10000;
+  pointer-events: none;
+
+  /* run glitch animation once on load */
+  animation: glitchOnce 1.5s ease-in-out 1 forwards;
+}
+
+/* Glitch keyframes */
+@keyframes glitchOnce {
+  0% {
+    transform: translateX(-50%) translate(0,0);
+    text-shadow: 0 0 4px #38bdf8;
+  }
+  20% {
+    transform: translateX(-50%) translate(-2px, 1px);
+    text-shadow: 1px 0 #ff3c3c, -1px 0 #38bdf8;
+  }
+  40% {
+    transform: translateX(-50%) translate(2px, -1px);
+    text-shadow: -1px 0 #ff3c3c, 1px 0 #38bdf8;
+  }
+  60% {
+    transform: translateX(-50%) translate(-1px, 2px);
+    text-shadow: 1px 1px #ff3c3c, -1px -1px #38bdf8;
+  }
+  80% {
+    transform: translateX(-50%) translate(1px, -2px);
+    text-shadow: -1px -1px #ff3c3c, 1px 1px #38bdf8;
+  }
+  100% {
+    transform: translateX(-50%) translate(0,0);
+    text-shadow: 0 0 4px #38bdf8; /* back to normal glow */
+  }
+}
 </style>
 </head>
 
 <body>
-
+<div class="top-text">
+  Abhi..
+</div>
 <div class="player">
   <div class="cover" id="cover"></div>
 
