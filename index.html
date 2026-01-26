@@ -578,6 +578,34 @@ if(savedBg){
   setBg(savedBg);
 }
 </script>
+  <button id="installBtn" style="display:none; padding:10px 20px; font-size:16px; cursor:pointer;">
+  Install App
+  </button>
+  <script>
+    let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing
+  e.preventDefault();
+  deferredPrompt = e;
+  
+  // Show the install button
+  installBtn.style.display = 'block';
+});
+
+installBtn.addEventListener('click', async () => {
+  // Hide the install button
+  installBtn.style.display = 'none';
+  
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User response to install: ${outcome}`);
+    deferredPrompt = null;
+  }
+});
+  </script>
 <div class="footer-text">
   2026 © Abhi-89
 </div>
