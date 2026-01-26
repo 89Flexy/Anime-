@@ -1,0 +1,21 @@
+{
+  "name": "Music-89",
+  "short_name": "89",
+  "description": "",
+  "start_url": "https://music-89.vercel.app/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "https://i.ibb.co/Mky97C7v/20260126-124939.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://i.ibb.co/Pz5bKdtW/20260126-125005.jpg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
