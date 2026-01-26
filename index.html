@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Music-89</title>
 
+<meta name="description" content="Music-89 is a stylish online music player website to enjoy your favorite songs anytime.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Music-89">
+<meta property="og:description" content="Listen and enjoy music with Music-89.">
+<meta property="og:image" content="https://drive.google.com/thumbnail?id=1pVLvz0c2tYbX4ZVVPAy1ghL0DHStvf7e&sz=w2000">
+<meta property="og:url" content="music-89.vercel.app/">
+<meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
 <style>
@@ -35,7 +43,7 @@ body{
   border-radius: 26px;
   background:
     linear-gradient(rgba(2,6,23,0.35),rgba(2,6,23,0.50)),
-    url("https://drive.google.com/thumbnail?id=1JAmTgq-_bmEwnc6ZaWGfRbiurO7hYkFb&sz=w2000");
+    url("https://i.ibb.co/mCR3vR1K/8cd2391b0e8074fd5ba390a55799f750.jpg");
   background-size: cover;
   background-position: center;
   box-shadow: 0 30px 70px rgba(0,0,0,.7);
@@ -45,7 +53,7 @@ body{
   border-radius:18px;
 
   /* 🎯 DEFAULT IMAGE (play se pehle) */
-  background: url("https://drive.google.com/thumbnail?id=1UAKTYwmKYiBaU7B8oNhfKPs6-MjhsKWx&sz=w2000") center/cover;
+  background: url("https://i.ibb.co/9mqzHh07/b6084f026b016b404ee4f186944e5885.jpg") center/cover;
 
   display:flex;
   align-items:center;
@@ -125,14 +133,21 @@ body{
 }
 
 .bg-box{
-  width:320px;
-  padding:16px;
-  border-radius:22px;
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(26px);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.1),
-    0 0 40px rgba(56,189,248,.35);
+  max-height: 80vh;   /* modal ki max height */
+  overflow-y: auto;  /* vertical scroll */
+  padding-right: 10px;
+}
+
+/* smooth & clean scrollbar (optional but sexy 😎) */
+.bg-box::-webkit-scrollbar{
+  width: 6px;
+}
+.bg-box::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,0.3);
+  border-radius: 10px;
+}
+.bg-box::-webkit-scrollbar-track{
+  background: transparent;
 }
 
 .bg-box h3{
@@ -147,8 +162,8 @@ body{
 }
 
 .bg-grid img{
-  width:100%;
-  height:80px;
+  width:105%;
+  height:105px;
   object-fit:cover;
   border-radius:12px;
   cursor:pointer;
@@ -219,6 +234,7 @@ body{
   50% { opacity: 0.7; text-shadow: 0 0 12px #38bdf8; }
   100% { opacity: 1; text-shadow: 0 0 4px #38bdf8; }
 }
+
 </style>
   <script>
 const topText = document.querySelector('.top-text');
@@ -236,6 +252,7 @@ setInterval(() => {
 </head>
 
 <body>
+    
 <div class="top-text">
   Abhi..
 </div>
@@ -264,7 +281,7 @@ setInterval(() => {
     <h3>Select Background</h3>
 
     <div class="bg-grid" id="bgGrid">
-<img src="https://drive.google.com/thumbnail?id=1m9T-3nRyyiEv0bK_l1fQGMikRr7ILISE&sz=w2000" alt="Bg1">
+      <img src="https://drive.google.com/thumbnail?id=1m9T-3nRyyiEv0bK_l1fQGMikRr7ILISE&sz=w2000" alt="Bg1">
 <img src="https://drive.google.com/thumbnail?id=1kHdrSebyuQMpQeN-Wo8NSr3MHfYnTpIF&sz=w2000" alt="Bg2">
 <img src="https://drive.google.com/thumbnail?id=1SJa0UpvRSWTmROqJKr95jHvKKSNpjAWr&sz=w2000" alt="Bg3">
 <img src="https://drive.google.com/thumbnail?id=1jeGsGsUSprmqEQ7LJgTOSTDjWNQvO7u5&sz=w2000" alt="Bg4">
@@ -290,6 +307,26 @@ setInterval(() => {
 <img src="https://drive.google.com/thumbnail?id=1wWx2accXvzKA41GQmJ4xa_iLVEfiPMfW&sz=w2000" alt="Bg20">
 
 <img src="https://drive.google.com/thumbnail?id=1s5K4HQ-sUibkgdi0CGpHaGg0WhOlHXvA&sz=w2000" alt="Bg21">
+<img src="https://drive.google.com/thumbnail?id=1q_CuQn5P2tW905-GbuErHDXFk4mQ5tlE&sz=w2000" alt="22">
+
+<img src="https://drive.google.com/thumbnail?id=1AltK8n6HMgsWr98MnVFNtCISoJekUDZy&sz=w2000" alt="23">
+
+<img src="https://drive.google.com/thumbnail?id=1f2LQdjtLjKdSpaNSZWIug3sgYkVki22r&sz=w2000" alt="24">
+
+<img src="https://drive.google.com/thumbnail?id=1QyQuIBM3ukaxw-wmH9v-m1RWU6rAr8GS&sz=w2000" alt="25">
+
+<img src="https://drive.google.com/thumbnail?id=1yv3u-E68hJZeC3JeeTfbPcMHLBzDcgUD&sz=w2000" alt="26">
+
+
+<img src="https://drive.google.com/thumbnail?id=1K9hGpHSQF6Yooqzz46_1T_YdLKEjKj_o&sz=w2000" alt="27">
+
+<img src="https://drive.google.com/thumbnail?id=1-0ricINkDfHhY92YsU-7KrCrg2iFa-KV&sz=w2000" alt="28">
+
+<img src="https://drive.google.com/thumbnail?id=1tw4UWBHN7WckIbszFZZPEccHAfCBEvbX&sz=w2000" alt="29">
+
+<img src="https://drive.google.com/thumbnail?id=12-o8fSPGDG8svPXbH5DQ80iL2k3ylbFJ&sz=w2000" alt="30">
+
+
     </div>
 
     <button class="bg-close" onclick="closeBgModal()">Close</button>
@@ -342,88 +379,88 @@ const songs = [
   },
   {
     name:"Ik Kudi",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/b6e2582752150321054c6b8481af85a651f66a75/Ik%20Kudi%20-%20wolf.cryman.mp3",
-    cover:"https://drive.google.com/thumbnail?id=1UAKTYwmKYiBaU7B8oNhfKPs6-MjhsKWx&sz=w2000"
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/b6e2582752150321054c6b8481af85a651f66a75/Ik Kudi - wolf.cryman.mp3",
+    cover:"https://i.ibb.co/9mqzHh07/b6084f026b016b404ee4f186944e5885.jpg"
   },
     {
     name:"SAMJHO NA",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/453a6c45fe119db6d844e18ff217538c98e2cf2a/Aditya%20Rikhari%20-%20SAMJHO%20NA%20(%20NASAMAJH%20)%20-%20Aditya%20Rikhari.mp3",
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/453a6c45fe119db6d844e18ff217538c98e2cf2a/Aditya Rikhari - SAMJHO NA ( NASAMAJH ) - Aditya Rikhari.mp3",
     cover:"https://drive.google.com/thumbnail?id=1PNGmFfDg1u3Eg3Tg51GLv7QCcaTjZSxs&sz=w2000"
   },
     {
     name:"Jugraafiya",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/453a6c45fe119db6d844e18ff217538c98e2cf2a/Jugraafiya%20-%20Full%20Video%20%20Super%2030%20%20Hrithik%20Roshan%20%26%20Mrunal%20Thakur%20%20Udit%20Narayan%20%26%20Shreya%20Ghoshal%20-%20Zee%20Music%20Company.mp3",
-    cover:"https://drive.google.com/thumbnail?id=1KmrrMo6D5IjMvDoJwO0dHAzPUyOBZhYY&sz=w2000"
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/453a6c45fe119db6d844e18ff217538c98e2cf2a/Jugraafiya - Full Video  Super 30  Hrithik Roshan & Mrunal Thakur  Udit Narayan & Shreya Ghoshal - Zee Music Company.mp3",
+    cover:"https://i.ibb.co/0jnJ3DVC/a46ecf05788ba510e4f09d4f08d0578b.jpg"
   },
       {
     name:"Dooriyan",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/453a6c45fe119db6d844e18ff217538c98e2cf2a/Dooriyan%20-%20Dino%20James%20ft.%20Kaprila%20%5BOfficial%20Music%20Video%5D%20-%20Sony%20Music%20India.mp3",
-    cover:"https://drive.google.com/thumbnail?id=1sjqxzuB643NjT4PG3bxXlaA42l_YRT9N&sz=w2000"
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/453a6c45fe119db6d844e18ff217538c98e2cf2a/Dooriyan - Dino James ft. Kaprila [Official Music Video] - Sony Music India.mp3",
+    cover:"https://i.ibb.co/bjy17LrF/95171b966c7ac0e51a7f0361e0b67d4c.jpg"
   },
     {
     name:"KASHISH",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/453a6c45fe119db6d844e18ff217538c98e2cf2a/KASHISH%20(Official%20Music%20Video)%20Ashish%20Bhatia%20%20Kashish%20Ratnani%20%20Omkar%20Singh%20-%20Ashish%20Bhatia.mp3",
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/453a6c45fe119db6d844e18ff217538c98e2cf2a/KASHISH (Official Music Video) Ashish Bhatia  Kashish Ratnani  Omkar Singh - Ashish Bhatia.mp3",
     cover:"https://drive.google.com/thumbnail?id=1hngqZ-4TUSG34EnWCUmUK1nY-Cwqh6K7&sz=w2000"
   },
       {
     name:"Jaane Na Tu",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/77f2fb9bb3851431d327185d80b837de8b22b22d/Jaane%20Na%20Tu%20(Official%20Music%20Video)%20%20Bhoomi%20%20Almost%20Loved%20-%20EP%20%20UR%20Debut%20%20Latest%20Hindi%20Indie%20Song%20-%20UR%20DEBUT%20(1).mp3",
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/77f2fb9bb3851431d327185d80b837de8b22b22d/Jaane Na Tu (Official Music Video)  Bhoomi  Almost Loved - EP  UR Debut  Latest Hindi Indie Song - UR DEBUT (1).mp3",
     cover:"https://drive.google.com/thumbnail?id=1T4ZCztxmXSPoYUluQAAn4rE5minna-DT&sz=w2000"
   },
     {
     name:"Kithe Jawan",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/77f2fb9bb3851431d327185d80b837de8b22b22d/Kithe%20Jawan%20(Takki%20Jawan)%20-%20Official%20Visualiser%20%20Bhoomi%20%20Naaz%20%20Saaheal%20%20UR%20Debut%20%20Hindi%20songs%20-%20UR%20DEBUT.mp3",
-    cover:"https://drive.google.com/thumbnail?id=1rtX83A9hsVorMxe9pCwZ9nCucsXEJXU2&sz=w2000"
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/77f2fb9bb3851431d327185d80b837de8b22b22d/Kithe Jawan (Takki Jawan) - Official Visualiser  Bhoomi  Naaz  Saaheal  UR Debut  Hindi songs - UR DEBUT.mp3",
+    cover:"https://i.ibb.co/twSmSXCs/a62eb6a33e1d8639dee22a6f7bdca9ac.jpg"
   },
      {
     name:"I'm Done",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/77f2fb9bb3851431d327185d80b837de8b22b22d/I'm%20Done%20%20Maan%20Panu%20%20I-Popstar%20%20Vol.1%20%20EP02%20%20Amazon%20MX%20Player%20-%20Warner%20Music%20India.mp3",
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/77f2fb9bb3851431d327185d80b837de8b22b22d/I'm Done  Maan Panu  I-Popstar  Vol.1  EP02  Amazon MX Player - Warner Music India.mp3",
     cover:"https://drive.google.com/thumbnail?id=1fgANA0vPW_vYiZNv06YmN0hZUSGJBUuC&sz=w2000"
   },
     {
     name:"Saudur - Na Sata",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/77f2fb9bb3851431d327185d80b837de8b22b22d/Saudur%20-%20Na%20Sata%20%20Highway%20Love%20%5BOfficial%20Visualiser%5D%20-%20Saudur.mp3",
-    cover:"https://drive.google.com/thumbnail?id=1b-9j35L2eytDFAHPGZBtuAr8WLL2T2Ax&sz=w2000"
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/77f2fb9bb3851431d327185d80b837de8b22b22d/Saudur - Na Sata  Highway Love [Official Visualiser] - Saudur.mp3",
+    cover:"https://i.ibb.co/qMQFRttN/d09e968e1ad8909221318060bc9c6208.jpg"
   },
       {
     name:"Ansh4sure - Bust A Nut",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Ansh4sure%20-%20Bust%20A%20Nut%20(Official%20Video)%20%20ISHQ-E-MAKHAUL%20-%20Ansh4sure.mp3",
-    cover:"https://drive.google.com/thumbnail?id=1yQ_y-oKWnUZoppoF33wYmqtqhz5x30py&sz=w2000"
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Ansh4sure - Bust A Nut (Official Video)  ISHQ-E-MAKHAUL - Ansh4sure.mp3",
+    cover:"https://i.ibb.co/twSmSXCs/a62eb6a33e1d8639dee22a6f7bdca9ac.jpg"
   },
     {
     name:"Give Me Some Sunshine",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Give%20Me%20Some%20Sunshine%20-%203%20Idiots%20%20Aamir%20Khan%2C%20Madhavan%2C%20Sharman%20J%20%20Suraj%20Jagan%20%20Shantanu%20Moitra%20-%20Zee%20Music%20Company.mp3",
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Give Me Some Sunshine - 3 Idiots  Aamir Khan, Madhavan, Sharman J  Suraj Jagan  Shantanu Moitra - Zee Music Company.mp3",
     cover:"https://drive.google.com/thumbnail?id=1hngqZ-4TUSG34EnWCUmUK1nY-Cwqh6K7&sz=w2000"
   },
       {
     name:"Behti Hawa Sa Tha Woh",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Behti%20Hawa%20Sa%20Tha%20Woh%20%E2%80%93%203%20Idiots%20%20Aamir%20Khan%2C%20Madhavan%2C%20Sharman%20J%20%20Shaan%20%26%20Shantanu%20M%20%20Swanand%20K%20-%20Zee%20Music%20Company.mp3",
-    cover:"https://drive.google.com/thumbnail?id=1rtX83A9hsVorMxe9pCwZ9nCucsXEJXU2&sz=w2000"
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Behti Hawa Sa Tha Woh – 3 Idiots  Aamir Khan, Madhavan, Sharman J  Shaan & Shantanu M  Swanand K - Zee Music Company.mp3",
+    cover:"https://i.ibb.co/NR8f1Hg/0cf69aab8a3722f0d6805abc7c40701f.jpg"
   },
     {
     name:"Sahiba",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Sahiba%20Lyrics%20-%20Aditya%20Rikhari%20%E2%80%A2%20saahiba%2C%20aaye%20ghar%20kaahe%20na%20-%20Vibe%20Bird.mp3",
-    cover:"https://drive.google.com/thumbnail?id=1UAKTYwmKYiBaU7B8oNhfKPs6-MjhsKWx&sz=w2000"
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Sahiba Lyrics - Aditya Rikhari • saahiba, aaye ghar kaahe na - Vibe Bird.mp3",
+    cover:"https://i.ibb.co/RT8Wby8C/c40904b2ccafb093bd44cbc78abb2209.jpg"
   },
     {
     name:"TU HAI KAHAN",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/AUR%20-%20TU%20HAI%20KAHAN%20-%20Raffey%20-%20Usama%20-%20Ahad%20(Official%20Music%20Video)%20(320%20kbps).mp3",
-    cover:"https://drive.google.com/thumbnail?id=1yQ_y-oKWnUZoppoF33wYmqtqhz5x30py&sz=w2000"
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/AUR - TU HAI KAHAN - Raffey - Usama - Ahad (Official Music Video) (320 kbps).mp3",
+    cover:"https://i.ibb.co/pjYJq2ys/90a397f1764dc5471fd15e13147859eb.jpg"
   },
       {
     name:"Ekti Ekti",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Ekti%20ekti%20-Chintu.m4a",
-    cover:"https://drive.google.com/thumbnail?id=1hngqZ-4TUSG34EnWCUmUK1nY-Cwqh6K7&sz=w2000"
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Ekti ekti -Chintu.m4a",
+    cover:"https://i.ibb.co/bjy17LrF/95171b966c7ac0e51a7f0361e0b67d4c.jpg"
   },
     {
     name:"Premalu",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Premalu%20Song%20.m4a",
-    cover:"https://drive.google.com/thumbnail?id=1VGPYMDnPlaHaMr18tibuNyS2-NokesE2&sz=w2000"
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Premalu Song .m4a",
+    cover:"https://i.ibb.co/0jnJ3DVC/a46ecf05788ba510e4f09d4f08d0578b.jpg"
   },
      {
     name:"Sunday",
-    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Sunday%20-%20Aditya%20A%20%20Naalayak%20%20Ronit%20Vinta%20-%20Aditya%20A.mp3",
-    cover:"https://drive.google.com/thumbnail?id=1fgANA0vPW_vYiZNv06YmN0hZUSGJBUuC&sz=w2000"
+    url:"https://raw.githubusercontent.com/89Flexy/Anime-/0bd34c4206771c6367868a504be5ce58b1f527e6/Sunday - Aditya A  Naalayak  Ronit Vinta - Aditya A.mp3",
+    cover:"https://i.ibb.co/9mqzHh07/b6084f026b016b404ee4f186944e5885.jpg"
   },
    
 ];
