@@ -480,13 +480,38 @@ let index=0;
 function playSong(i){
   index = i;
   const s = songs[i];
+
   audio.src = s.url;
   audio.play();
+
   nameUI.innerText = s.name;
   playBtn.innerText = "⬜";
+
   cover.style.background = `url(${s.cover}) center/cover`;
   cover.innerHTML = "";
-  cover.classList.add("playing"); // start up-down float
+  cover.classList.add("playing");
+
+  // 🔒 LOCK SCREEN IMAGE
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: s.name,
+      artist: "Music-89",
+      album: "Music-89",
+      artwork: [
+        { src: "https://i.ibb.co/9mqzHh07/b6084f026b016b404ee4f186944e5885.jpg", sizes: "96x96", type: "image/png" },
+        { src: "https://i.ibb.co/9mqzHh07/b6084f026b016b404ee4f186944e5885.jpg", sizes: "128x128", type: "image/png" },
+        { src: "https://i.ibb.co/9mqzHh07/b6084f026b016b404ee4f186944e5885.jpg", sizes: "192x192", type: "image/png" },
+        { src: "https://i.ibb.co/9mqzHh07/b6084f026b016b404ee4f186944e5885.jpg", sizes: "256x256", type: "image/png" },
+        { src: "https://i.ibb.co/9mqzHh07/b6084f026b016b404ee4f186944e5885.jpg", sizes: "384x384", type: "image/png" },
+        { src: "https://i.ibb.co/9mqzHh07/b6084f026b016b404ee4f186944e5885.jpg", sizes: "512x512", type: "image/png" }
+      ]
+    });
+
+    navigator.mediaSession.setActionHandler("play", () => audio.play());
+    navigator.mediaSession.setActionHandler("pause", () => audio.pause());
+    navigator.mediaSession.setActionHandler("nexttrack", next);
+    navigator.mediaSession.setActionHandler("previoustrack", prev);
+  }
 }
 
 function toggle(){
